@@ -7,7 +7,6 @@ const DEFAULT_QUERY = 'redux'
 const PATH_BASE = 'https://hn.algolia.com/api/v1'
 const PATH_SEARCH = '/search'
 const PARAM_SEARCH = 'query='
-const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${DEFAULT_QUERY}`
 
 class App extends Component {
   constructor (props) {
@@ -40,8 +39,10 @@ class App extends Component {
 
   onDismiss (id) {
     const isNotId = item => item.objectID !== id
-    const updatedList = this.state.list.filter(isNotId)
-    this.setState({ list: updatedList })
+    const updatedHits = this.state.result.hits.filter(isNotId)
+    this.setState({
+      result: { ...this.state.result, hits: updatedHits }
+    })
   }
 
   onSearchChange (event) {
@@ -55,7 +56,6 @@ class App extends Component {
     if (!result) {
       return null
     }
-    console.log(this.state)
     return (
       <div className='page'>
         <div className='interactions'>
@@ -65,11 +65,12 @@ class App extends Component {
             Search
           </Search>
         </div>
-        <Table
-          list={result.hits}
-          onDismiss={this.onDismiss}
-          pattern={searchTerm}
-        />
+        { result &&
+          <Table
+            list={result.hits}
+            onDismiss={this.onDismiss}
+            pattern={searchTerm}
+        /> }
       </div>
     )
   }
