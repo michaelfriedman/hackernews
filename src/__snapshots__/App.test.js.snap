@@ -7,6 +7,26 @@ exports[`Button snapshots 1`] = `
 </button>
 `;
 
+exports[`ButtonWithLoading snapshots 1`] = `
+<button
+  className=""
+  onClick={undefined}
+  type="button" />
+`;
+
+exports[`Loading snapshots 1`] = `
+<div>
+  <span
+    aria-hidden={true}
+    className="fa fa-spinner fa-5x fa-spin fa fa-spinner"
+    style={
+      Object {
+        "textShadow": "0 1px 0 rgba(0, 0, 0, 0.1)",
+      }
+    } />
+</div>
+`;
+
 exports[`Search snapshots 1`] = `
 <form
   onSubmit={undefined}>
@@ -150,12 +170,16 @@ exports[`test snapshots 1`] = `
     className="table" />
   <div
     className="interactions">
-    <button
-      className=""
-      onClick={[Function]}
-      type="button">
-      More
-    </button>
+    <div>
+      <span
+        aria-hidden={true}
+        className="fa fa-spinner fa-5x fa-spin fa fa-spinner"
+        style={
+          Object {
+            "textShadow": "0 1px 0 rgba(0, 0, 0, 0.1)",
+          }
+        } />
+    </div>
   </div>
 </div>
 `;

@@ -145,5 +145,6 @@ export {
   Button,
   Search,
   Table,
-  Loading
+  Loading,
+  ButtonWithLoading
 }
