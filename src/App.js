@@ -1,19 +1,41 @@
 import React, { Component } from 'react'
-import list from './list'
 import Search from './components/Search'
 import Table from './components/Table'
 import './App.css'
+
+const DEFAULT_QUERY = 'redux'
+const PATH_BASE = 'https://hn.algolia.com/api/v1'
+const PATH_SEARCH = '/search'
+const PARAM_SEARCH = 'query='
+const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${DEFAULT_QUERY}`
 
 class App extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      list,
-      searchTerm: ''
+      result: null,
+      searchTerm: DEFAULT_QUERY
     }
     this.onDismiss = this.onDismiss.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)
+    this.setSearchTopstories = this.setSearchTopstories.bind(this)
+    this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this)
+  }
+
+  setSearchTopstories (result) {
+    this.setState({ result })
+  }
+
+  fetchSearchTopStories (searchTerm) {
+    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
+      .then(response => response.json())
+      .then(result => this.setSearchTopstories(result))
+  }
+
+  componentDidMount () {
+    const { searchTerm } = this.state
+    this.fetchSearchTopStories(searchTerm)
   }
 
   onDismiss (id) {
@@ -29,7 +51,11 @@ class App extends Component {
   }
 
   render () {
-    const { searchTerm, list } = this.state
+    const { searchTerm, result } = this.state
+    if (!result) {
+      return null
+    }
+    console.log(this.state)
     return (
       <div className='page'>
         <div className='interactions'>
@@ -40,7 +66,7 @@ class App extends Component {
           </Search>
         </div>
         <Table
-          list={list}
+          list={result.hits}
           onDismiss={this.onDismiss}
           pattern={searchTerm}
         />
