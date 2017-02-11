@@ -1,0 +1,185 @@
+exports[`Button snapshots 1`] = `
+<button
+  className=""
+  onClick={undefined}
+  type="button">
+  More
+</button>
+`;
+
+exports[`ButtonWithLoading snapshots 1`] = `
+<button
+  className=""
+  onClick={undefined}
+  type="button" />
+`;
+
+exports[`Loading snapshots 1`] = `
+<div>
+  <span
+    aria-hidden={true}
+    className="fa fa-spinner fa-5x fa-spin fa fa-spinner"
+    style={
+      Object {
+        "textShadow": "0 1px 0 rgba(0, 0, 0, 0.1)",
+      }
+    } />
+</div>
+`;
+
+exports[`Search snapshots 1`] = `
+<form
+  onSubmit={undefined}>
+  <input
+    onChange={undefined}
+    type="text"
+    value={undefined} />
+  <button
+    type="submit">
+    Search
+  </button>
+</form>
+`;
+
+exports[`Table snapshots 1`] = `
+<div
+  className="table">
+  <div
+    className="table-row">
+    <span
+      style={
+        Object {
+          "width": "40%",
+        }
+      }>
+      <a
+        href={undefined}>
+        1
+      </a>
+    </span>
+    <span
+      style={
+        Object {
+          "width": "30%",
+        }
+      }>
+      1
+    </span>
+    <span
+      style={
+        Object {
+          "width": "10%",
+        }
+      }>
+      1
+    </span>
+    <span
+      style={
+        Object {
+          "width": "10%",
+        }
+      }>
+      2
+    </span>
+    <span
+      style={
+        Object {
+          "width": "10%",
+        }
+      }>
+      <button
+        className="button-inline"
+        onClick={[Function]}
+        type="button">
+        Dismiss
+      </button>
+    </span>
+  </div>
+  <div
+    className="table-row">
+    <span
+      style={
+        Object {
+          "width": "40%",
+        }
+      }>
+      <a
+        href={undefined}>
+        2
+      </a>
+    </span>
+    <span
+      style={
+        Object {
+          "width": "30%",
+        }
+      }>
+      2
+    </span>
+    <span
+      style={
+        Object {
+          "width": "10%",
+        }
+      }>
+      1
+    </span>
+    <span
+      style={
+        Object {
+          "width": "10%",
+        }
+      }>
+      2
+    </span>
+    <span
+      style={
+        Object {
+          "width": "10%",
+        }
+      }>
+      <button
+        className="button-inline"
+        onClick={[Function]}
+        type="button">
+        Dismiss
+      </button>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`test snapshots 1`] = `
+<div
+  className="page">
+  <div
+    className="interactions">
+    <form
+      onSubmit={[Function]}>
+      <input
+        onChange={[Function]}
+        type="text"
+        value="redux" />
+      <button
+        type="submit">
+        Search
+      </button>
+    </form>
+  </div>
+  <div
+    className="table" />
+  <div
+    className="interactions">
+    <div>
+      <span
+        aria-hidden={true}
+        className="fa fa-spinner fa-5x fa-spin fa fa-spinner"
+        style={
+          Object {
+            "textShadow": "0 1px 0 rgba(0, 0, 0, 0.1)",
+          }
+        } />
+    </div>
+  </div>
+</div>
+`;

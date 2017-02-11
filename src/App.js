@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Search from './components/Search'
 import Table from './components/Table'
 import Button from './components/Button'
+import Loading from './components/Loading'
+import ButtonWithLoading from './components/ButtonWithLoading'
 import './App.css'
 
 const DEFAULT_QUERY = 'redux'
@@ -20,7 +22,8 @@ class App extends Component {
     this.state = {
       results: null,
       searchKey: '',
-      searchTerm: DEFAULT_QUERY
+      searchTerm: DEFAULT_QUERY,
+      isLoading: false
     }
     this.onDismiss = this.onDismiss.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)
@@ -37,9 +40,10 @@ class App extends Component {
   }
 
   fetchSearchTopStories (searchTerm, page) {
+    this.setState({ isLoading: true })
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
-    .then(response => response.json())
-    .then(result => this.setSearchTopStories(result))
+      .then(response => response.json())
+      .then(result => this.setSearchTopStories(result))
   }
 
   needsToSearchTopStories (searchTerm) {
@@ -69,7 +73,8 @@ class App extends Component {
       results: {
         ...results,
         [searchKey]: { hits: updatedHits, page }
-      }
+      },
+      isLoading: false
     })
   }
 
@@ -96,7 +101,7 @@ class App extends Component {
   }
 
   render () {
-    const { searchTerm, results, searchKey } = this.state
+    const { searchTerm, results, searchKey, isLoading } = this.state
     const page = (
       results &&
       results[searchKey] &&
@@ -123,9 +128,11 @@ class App extends Component {
           onDismiss={this.onDismiss}
         />
         <div className='interactions'>
-          <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+          <ButtonWithLoading
+            isLoading={isLoading}
+            onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
             More
-          </Button>
+          </ButtonWithLoading>
         </div>
       </div>
     )
@@ -133,3 +140,11 @@ class App extends Component {
 }
 
 export default App
+
+export {
+  Button,
+  Search,
+  Table,
+  Loading,
+  ButtonWithLoading
+}
