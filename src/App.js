@@ -3,6 +3,7 @@ import Search from './components/Search'
 import Table from './components/Table'
 import Button from './components/Button'
 import Loading from './components/Loading'
+import ButtonWithLoading from './components/ButtonWithLoading'
 import './App.css'
 
 const DEFAULT_QUERY = 'redux'
@@ -127,13 +128,11 @@ class App extends Component {
           onDismiss={this.onDismiss}
         />
         <div className='interactions'>
-          {
-            isLoading
-            ? <Loading />
-            : <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
-              More
-            </Button>
-          }
+          <ButtonWithLoading
+            isLoading={isLoading}
+            onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+            More
+          </ButtonWithLoading>
         </div>
       </div>
     )
@@ -145,5 +144,6 @@ export default App
 export {
   Button,
   Search,
-  Table
+  Table,
+  Loading
 }
