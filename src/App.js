@@ -18,6 +18,7 @@ class App extends Component {
     }
     this.onDismiss = this.onDismiss.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)
+    this.onSearchSubmit = this.onSearchSubmit.bind(this)
     this.setSearchTopstories = this.setSearchTopstories.bind(this)
     this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this)
   }
@@ -37,6 +38,18 @@ class App extends Component {
     this.fetchSearchTopStories(searchTerm)
   }
 
+  onSearchChange (event) {
+    this.setState({
+      searchTerm: event.target.value
+    })
+  }
+
+  onSearchSubmit (event) {
+    event.preventDefault()
+    const { searchTerm } = this.state
+    this.fetchSearchTopStories(searchTerm)
+  }
+
   onDismiss (id) {
     const isNotId = item => item.objectID !== id
     const updatedHits = this.state.result.hits.filter(isNotId)
@@ -45,22 +58,14 @@ class App extends Component {
     })
   }
 
-  onSearchChange (event) {
-    this.setState({
-      searchTerm: event.target.value
-    })
-  }
-
   render () {
     const { searchTerm, result } = this.state
-    if (!result) {
-      return null
-    }
     return (
       <div className='page'>
         <div className='interactions'>
           <Search
             onChange={this.onSearchChange}
+            onSubmit={this.onSearchSubmit}
             value={searchTerm}>
             Search
           </Search>
@@ -69,7 +74,6 @@ class App extends Component {
           <Table
             list={result.hits}
             onDismiss={this.onDismiss}
-            pattern={searchTerm}
         /> }
       </div>
     )

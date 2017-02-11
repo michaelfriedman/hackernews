@@ -5,12 +5,10 @@ const largeColumn = { width: '40%' }
 const midColumn = { width: '30%' }
 const smallColumn = { width: '10%' }
 
-const isSearched = searchTerm => item => !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase())
-
-const Table = ({ list, pattern, onDismiss }) =>
+const Table = ({ list, onDismiss }) =>
   <div className='table'>
     {
-      list.filter(isSearched(pattern)).map(item =>
+      list.map(item =>
         <div className='table-row' key={item.objectID}>
           <span style={largeColumn}>
             <a href={item.url}>
