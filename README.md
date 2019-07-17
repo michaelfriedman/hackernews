@@ -1,2 +1,1 @@
-# Hacker News Demonstration
-![Hacker News App](https://i.ibb.co/XWfV4b3/Screen-Shot-2019-07-16-at-5-37-05-PM.png "Hacker News App")
+![Hacker News App](https://cl.ly/aa036462c574/Screen%20Recording%202019-07-16%20at%2007.20%20PM.gif "Hacker News App")
