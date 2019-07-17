@@ -1,2 +1,2 @@
 # Hacker News Demonstration
-![Hacker News App](https://i.ibb.co/vjxkHzC/86-CDA06-D-C7-D4-488-E-AB20-ECC53938-A22-D.jpg "Hacker News App")
+![Hacker News App](https://i.ibb.co/XWfV4b3/Screen-Shot-2019-07-16-at-5-37-05-PM.png "Hacker News App")
